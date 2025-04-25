@@ -1,0 +1,69 @@
+# примеры API-запросов
+
+
+
+###
+GET http://localhost:8000/api/advertisements/
+
+###
+# фильтрация по создателю
+GET http://localhost:8000/api/advertisements/?creator=1
+Content-Type: application/json
+
+
+### 
+# фильтрация по создателю и статусу
+GET http://localhost:8000/api/advertisements/?creator=2&status=CLOSED
+Content-Type: application/json
+#& created_at=2025-04-22
+
+###
+# фильтрация по дате
+GET http://localhost:8000/api/advertisements/?created_at_before=2025-04-22
+
+###
+# поиск по дате
+GET http://localhost:8000/api/advertisements/?search=2025-04-22
+Content-Type: application/json
+
+
+###
+# добавление записи
+
+POST http://localhost:8000/api/advertisements/
+Content-Type: application/json
+Authorization: Token da237fd4e537708633f86f3e90e2558837506f31
+
+{
+  "title": " Трюмо IKEA",
+  "description": "Срочно"
+}
+
+###
+
+POST http://localhost:8000/api/advertisements/
+Content-Type: application/json
+Authorization: Token 2f1d27d209ac03781d074bb88b9e8527e5051ce8
+
+{
+  "title": " Сервант IKEA",
+  "description": "Срочно"
+}
+
+###
+# попытка поменять объявление
+
+PATCH http://localhost:8000/api/advertisements/3/
+Content-Type: application/json
+Authorization: Token 2f1d27d209ac03781d074bb88b9e8527e5051ce8
+
+{
+  "status": "OPEN"
+}
+
+###
+DELETE http://localhost:8000/api/advertisements/31/
+Authorization: Token 2f1d27d209ac03781d074bb88b9e8527e5051ce8
+
+
+
